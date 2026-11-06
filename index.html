@@ -986,8 +986,8 @@
         <!-- COLUMNA DERECHA: FORMULARIO WEB3FORMS -->
         <div class="lg:col-span-7">
           <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-glass border-cyan-500/30 text-left">
-            <h3 class="text-xl font-black text-white mb-1">Solicitud de Cotización en Línea</h3>
-            <p class="text-xs text-slate-400 mb-6">Envíanos tus datos y te contactaremos en menos de 30 minutos sin compromiso.</p>
+            <h3 class="text-xl font-black text-white mb-1" data-i18n="quote-heading">Solicitud de Cotización en Línea</h3>
+            <p class="text-xs text-slate-400 mb-6" data-i18n="quote-intro">Envíanos tus datos y te contactaremos para revisar tu solicitud.</p>
 
             <form id="quote-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
               <!-- Clave activa de Web3Forms (dsgrhomeservices@gmail.com) -->
@@ -997,37 +997,49 @@
 
               <div class="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-medium text-slate-300 mb-1">Tu Nombre</label>
-                  <input type="text" name="name" required placeholder="Ej: John Doe" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400">
+                  <label class="block text-xs font-medium text-slate-300 mb-1" data-i18n="quote-name">Tu Nombre</label>
+                  <input type="text" name="name" required data-i18n-placeholder="quote-name-ph" placeholder="Ej: John Doe" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400">
                 </div>
 
                 <div>
-                  <label class="block text-xs font-medium text-slate-300 mb-1">Teléfono (Llamada o SMS)</label>
-                  <input type="tel" name="phone" required placeholder="Ej: (702) 000-0000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400">
+                  <label class="block text-xs font-medium text-slate-300 mb-1" data-i18n="quote-phone">Teléfono (Llamada o SMS)</label>
+                  <input type="tel" name="phone" required data-i18n-placeholder="quote-phone-ph" placeholder="Ej: (702) 000-0000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400">
                 </div>
               </div>
 
               <div>
-                <label class="block text-xs font-medium text-slate-300 mb-1">Servicio Requerido</label>
-                <select name="service" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400">
-                  <option value="Bathroom">Reparación de Baño / Plomería</option>
-                  <option value="Drywall">Drywall & Pintura</option>
-                  <option value="TV Mounting">Instalación de TV / Repisas</option>
-                  <option value="Furniture">Ensamblaje de Gabinetes o Muebles</option>
-                  <option value="Concrete">Concreto / Pasillos / Extensiones</option>
-                  <option value="Junk Removal">Mudanza & Retiro de Desechos</option>
-                  <option value="Pergola">Pérgola o Patio Cover de Madera</option>
-                  <option value="Other">Otro servicio de Handyman</option>
+                <label class="block text-xs font-medium text-slate-300 mb-1" data-i18n="quote-service">Servicio Requerido</label>
+                <select name="service" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400">
+                  <option value="" disabled selected data-i18n="quote-service-placeholder">Selecciona un servicio</option>
+                  <option value="Bathroom" data-i18n="quote-opt-bathroom">Reparación de Baño / Plomería</option>
+                  <option value="Drywall" data-i18n="quote-opt-drywall">Drywall & Pintura</option>
+                  <option value="TV Mounting" data-i18n="quote-opt-tv">Instalación de TV / Repisas</option>
+                  <option value="Furniture" data-i18n="quote-opt-furniture">Ensamblaje de Gabinetes o Muebles</option>
+                  <option value="Concrete" data-i18n="quote-opt-concrete">Concreto / Pasillos / Extensiones</option>
+                  <option value="Junk Removal" data-i18n="quote-opt-junk">Mudanza & Retiro de Desechos</option>
+                  <option value="Pergola" data-i18n="quote-opt-pergola">Pérgola o Patio Cover de Madera</option>
+                  <option value="Other" data-i18n="quote-opt-other">Otro servicio de Handyman</option>
                 </select>
               </div>
 
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-medium text-slate-300 mb-1" for="quote-zip" data-i18n="quote-zip-label">Código postal (ZIP)</label>
+                  <input id="quote-zip" type="text" name="zip" required inputmode="numeric" autocomplete="postal-code" maxlength="5" pattern="[0-9]{5}" title="Ingresa exactamente 5 dígitos" data-i18n-placeholder="quote-zip-ph" placeholder="Ej: 89117" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400">
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-slate-300 mb-1" for="quote-email" data-i18n="quote-email-label">Correo electrónico (opcional)</label>
+                  <input id="quote-email" type="email" name="email" autocomplete="email" data-i18n-placeholder="quote-email-ph" placeholder="Ej: nombre@correo.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400">
+                </div>
+              </div>
+
               <div>
-                <label class="block text-xs font-medium text-slate-300 mb-1">Descripción del Trabajo</label>
-                <textarea name="message" rows="3" required placeholder="Indica detalles y zona de Las Vegas donde te encuentras..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"></textarea>
+                <label class="block text-xs font-medium text-slate-300 mb-1" data-i18n="quote-message">Descripción del Trabajo</label>
+                <textarea name="message" rows="3" required data-i18n-placeholder="quote-message-ph" placeholder="Indica detalles y zona de Las Vegas donde te encuentras..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"></textarea>
               </div>
 
               <button type="submit" class="w-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black py-3 rounded-xl text-xs sm:text-sm shadow-glow-cyan transition">
-                Enviar Solicitud
+                <span data-i18n="quote-submit">Enviar Solicitud</span>
               </button>
               <div id="form-status" class="hidden"></div>
             </form>
@@ -1401,11 +1413,16 @@
       if (quoteForm) {
         quoteForm.addEventListener('submit', async (e) => {
           e.preventDefault();
+          if (!quoteForm.checkValidity()) {
+            quoteForm.reportValidity();
+            return;
+          }
           const btn = quoteForm.querySelector('button[type="submit"]');
-          const originalText = btn.textContent;
+          const submitLabel = btn.querySelector('[data-i18n="quote-submit"]');
+          const originalText = submitLabel.textContent;
           const statusDiv = document.getElementById('form-status');
           
-          btn.textContent = 'Enviando solicitud...';
+          submitLabel.textContent = document.documentElement.lang === 'en' ? 'Sending request...' : 'Enviando solicitud...';
           btn.disabled = true;
 
           try {
@@ -1418,16 +1435,16 @@
             if (data.success) {
               quoteForm.reset();
               statusDiv.className = 'mt-3 text-center text-xs font-bold py-3.5 px-4 rounded-xl border bg-emerald-950/80 text-emerald-300 border-emerald-500/60 block shadow-lg';
-              statusDiv.innerHTML = '✅ ¡Solicitud enviada con éxito! Nos comunicaremos contigo en menos de 30 minutos al teléfono indicado.';
+              statusDiv.textContent = document.documentElement.lang === 'en' ? '✅ Request sent successfully! We will contact you at the phone number provided.' : '✅ ¡Solicitud enviada con éxito! Nos comunicaremos contigo al teléfono indicado.';
             } else {
               statusDiv.className = 'mt-3 text-center text-xs font-bold py-3.5 px-4 rounded-xl border bg-amber-950/80 text-amber-300 border-amber-500/60 block';
-              statusDiv.innerHTML = '⚠️ Ocurrió un problema. Por favor llámanos o envíanos un SMS directamente al <strong>(725) 275-9334</strong>.';
+              statusDiv.textContent = document.documentElement.lang === 'en' ? '⚠️ Something went wrong. Please call or text (725) 275-9334.' : '⚠️ Ocurrió un problema. Por favor llámanos o envíanos un SMS al (725) 275-9334.';
             }
           } catch (err) {
             statusDiv.className = 'mt-3 text-center text-xs font-bold py-3.5 px-4 rounded-xl border bg-amber-950/80 text-amber-300 border-amber-500/60 block';
-            statusDiv.innerHTML = '⚠️ Error de conexión. Puedes escribirnos directamente por WhatsApp al <strong>(725) 275-9334</strong>.';
+            statusDiv.textContent = document.documentElement.lang === 'en' ? '⚠️ Connection error. Please call or text (725) 275-9334.' : '⚠️ Error de conexión. Puedes llamarnos o enviarnos un SMS al (725) 275-9334.';
           } finally {
-            btn.textContent = originalText;
+            submitLabel.textContent = dict[document.documentElement.lang]?.['quote-submit'] || originalText;
             btn.disabled = false;
           }
         });
@@ -1437,7 +1454,30 @@
     // 4. SISTEMA BILINGÜE
     const dict = {
       es: {
+        "quote-heading": "Solicitud de Cotización en Línea",
+        "quote-intro": "Envíanos tus datos y te contactaremos para revisar tu solicitud.",
+        "quote-name": "Tu Nombre",
+        "quote-phone": "Teléfono (Llamada o SMS)",
+        "quote-service": "Servicio Requerido",
+        "quote-message": "Descripción del Trabajo",
+        "quote-submit": "Enviar Solicitud",
+        "quote-opt-bathroom": "Reparación de Baño / Plomería",
+        "quote-opt-drywall": "Drywall & Pintura",
+        "quote-opt-tv": "Instalación de TV / Repisas",
+        "quote-opt-furniture": "Ensamblaje de Gabinetes o Muebles",
+        "quote-opt-concrete": "Concreto / Pasillos / Extensiones",
+        "quote-opt-junk": "Mudanza & Retiro de Desechos",
+        "quote-opt-pergola": "Pérgola o Patio Cover de Madera",
+        "quote-opt-other": "Otro servicio de Handyman",
+        "quote-name-ph": "Ej: John Doe",
+        "quote-phone-ph": "Ej: (702) 000-0000",
+        "quote-zip-ph": "Ej: 89117",
+        "quote-email-ph": "Ej: nombre@correo.com",
+        "quote-message-ph": "Indica detalles y zona de Las Vegas donde te encuentras...",
         "top-license": "DSGR Repairs & Home Services LLC • Las Vegas & Henderson",
+        "quote-service-placeholder": "Selecciona un servicio",
+        "quote-zip-label": "Código postal (ZIP)",
+        "quote-email-label": "Correo electrónico (opcional)",
         "nav-about": "Nosotros",
         "nav-services": "Servicios",
         "nav-slider": "Transformaciones",
@@ -1515,7 +1555,30 @@
         "footer-about": "Compañía legalmente organizada bajo las leyes de Nevada. Especialistas en reparaciones de propiedades residenciales y comerciales en Clark County."
       },
       en: {
+        "quote-heading": "Request a Free Quote",
+        "quote-intro": "Send us your details and we will contact you to review your request.",
+        "quote-name": "Your Name",
+        "quote-phone": "Phone (Call or Text)",
+        "quote-service": "Service Needed",
+        "quote-message": "Project Details",
+        "quote-submit": "Send Quote Request",
+        "quote-opt-bathroom": "Bathroom Repair / Plumbing",
+        "quote-opt-drywall": "Drywall & Painting",
+        "quote-opt-tv": "TV Mounting / Shelves",
+        "quote-opt-furniture": "Cabinet or Furniture Assembly",
+        "quote-opt-concrete": "Concrete / Walkways / Extensions",
+        "quote-opt-junk": "Moving & Junk Removal",
+        "quote-opt-pergola": "Wood Pergola or Patio Cover",
+        "quote-opt-other": "Other Handyman Service",
+        "quote-name-ph": "e.g., John Doe",
+        "quote-phone-ph": "e.g., (702) 000-0000",
+        "quote-zip-ph": "e.g., 89117",
+        "quote-email-ph": "e.g., name@example.com",
+        "quote-message-ph": "Describe the project and your area in Las Vegas...",
         "top-license": "DSGR Repairs & Home Services LLC • Las Vegas & Henderson",
+        "quote-service-placeholder": "Select a service",
+        "quote-zip-label": "ZIP code",
+        "quote-email-label": "Email (optional)",
         "nav-about": "About",
         "nav-services": "Services",
         "nav-slider": "Transformations",
@@ -1595,6 +1658,7 @@
     };
 
     function switchLanguage(lang) {
+      document.documentElement.lang = lang;
       const btnEs = document.getElementById('btn-lang-es');
       const btnEn = document.getElementById('btn-lang-en');
 
@@ -1612,6 +1676,12 @@
           el.textContent = dict[lang][key];
         }
       });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (dict[lang] && dict[lang][key]) el.placeholder = dict[lang][key];
+      });
+      const zip = document.getElementById('quote-zip');
+      if (zip) zip.title = lang === 'en' ? 'Enter exactly 5 digits' : 'Ingresa exactamente 5 dígitos';
       runCalculation();
     }
 
