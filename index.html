@@ -988,9 +988,9 @@
             <h3 class="text-xl font-black text-white mb-1">Solicitud de Cotización en Línea</h3>
             <p class="text-xs text-slate-400 mb-6">Envíanos tus datos y te contactaremos en menos de 30 minutos sin compromiso.</p>
 
-            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
-              <!-- Clave gratuita de Web3Forms (la obtienes en web3forms.com con tu email) -->
-              <input type="hidden" name="access_key" value="TU_ACCESS_KEY_AQUI">
+            <form id="quote-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+              <!-- Clave activa de Web3Forms (dsgrhomeservices@gmail.com) -->
+              <input type="hidden" name="access_key" value="0bd77c65-b747-4960-922d-5ef54e1ef0a0">
               <input type="hidden" name="subject" value="🚨 Nueva Solicitud de Cotización - DSGR Las Vegas">
               <input type="hidden" name="from_name" value="DSGR Web Leads">
 
@@ -1028,6 +1028,7 @@
               <button type="submit" class="w-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black py-3 rounded-xl text-xs sm:text-sm shadow-glow-cyan transition">
                 Enviar Solicitud
               </button>
+              <div id="form-status" class="hidden"></div>
             </form>
           </div>
         </div>
@@ -1384,12 +1385,50 @@
       }
     }
 
-    // Permitir presionar "Enter" en el input de código postal
+    // Eventos al cargar el DOM
     window.addEventListener('DOMContentLoaded', () => {
+      // Enter en input de zip code
       const zipIn = document.getElementById('zip-input');
       if (zipIn) {
         zipIn.addEventListener('keydown', (e) => {
           if (e.key === 'Enter') checkZipCode();
+        });
+      }
+
+      // Enviar formulario Web3Forms vía AJAX
+      const quoteForm = document.getElementById('quote-form');
+      if (quoteForm) {
+        quoteForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const btn = quoteForm.querySelector('button[type="submit"]');
+          const originalText = btn.textContent;
+          const statusDiv = document.getElementById('form-status');
+          
+          btn.textContent = 'Enviando solicitud...';
+          btn.disabled = true;
+
+          try {
+            const formData = new FormData(quoteForm);
+            const res = await fetch('https://api.web3forms.com/submit', {
+              method: 'POST',
+              body: formData
+            });
+            const data = await res.json();
+            if (data.success) {
+              quoteForm.reset();
+              statusDiv.className = 'mt-3 text-center text-xs font-bold py-3.5 px-4 rounded-xl border bg-emerald-950/80 text-emerald-300 border-emerald-500/60 block shadow-lg';
+              statusDiv.innerHTML = '✅ ¡Solicitud enviada con éxito! Nos comunicaremos contigo en menos de 30 minutos al teléfono indicado.';
+            } else {
+              statusDiv.className = 'mt-3 text-center text-xs font-bold py-3.5 px-4 rounded-xl border bg-amber-950/80 text-amber-300 border-amber-500/60 block';
+              statusDiv.innerHTML = '⚠️ Ocurrió un problema. Por favor llámanos o envíanos un SMS directamente al <strong>(725) 275-9334</strong>.';
+            }
+          } catch (err) {
+            statusDiv.className = 'mt-3 text-center text-xs font-bold py-3.5 px-4 rounded-xl border bg-amber-950/80 text-amber-300 border-amber-500/60 block';
+            statusDiv.innerHTML = '⚠️ Error de conexión. Puedes escribirnos directamente por WhatsApp al <strong>(725) 275-9334</strong>.';
+          } finally {
+            btn.textContent = originalText;
+            btn.disabled = false;
+          }
         });
       }
     });
