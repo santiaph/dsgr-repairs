@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://santiaph.github.io/dsgr-repairs/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://santiaph.github.io/dsgr-repairs/images/pergola-after.jpg</image:loc>
+      <image:title>Custom Pergola and Patio Cover in Las Vegas</image:title>
+      <image:caption>DSGR Repairs and Home Services LLC - Patio cover and outdoor living installation</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiaph.github.io/dsgr-repairs/images/bath-after.jpg</image:loc>
+      <image:title>Bathroom Remodel in Henderson and Las Vegas</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiaph.github.io/dsgr-repairs/images/drywall-after.jpg</image:loc>
+      <image:title>Drywall Repair and Texture Matching in Las Vegas</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santiaph.github.io/dsgr-repairs/images/concrete-after.jpg</image:loc>
+      <image:title>Concrete Slab and Patio Extension in Clark County</image:title>
+    </image:image>
+  </url>
+</urlset>
